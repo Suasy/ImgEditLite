@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
       <HintPath>packages\OpenCvSharp4.4.5.2.20210404\lib\net461\OpenCvSharp.dll</HintPath>
     </Reference>
@@ -91,6 +94,7 @@
     <Compile Include="uis\AbortForm.Designer.cs">
       <DependentUpon>AbortForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="utils\BitmapUtils.cs" />
     <Compile Include="utils\Filter.cs" />
     <Compile Include="uis\FormImgEdit.cs">
       <SubType>Form</SubType>
@@ -118,6 +122,7 @@
     <Compile Include="uis\ResizeForm.Designer.cs">
       <DependentUpon>ResizeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="utils\RESTfulClient.cs" />
     <Compile Include="utils\Stack.cs" />
     <Compile Include="utils\Toning.cs" />
     <EmbeddedResource Include="uis\AbortForm.resx">

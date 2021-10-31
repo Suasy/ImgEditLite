@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
+using Newtonsoft.Json;
 
 namespace ImgEdit
 {
@@ -32,19 +33,42 @@ namespace ImgEdit
     {
         public override Bitmap DoFilter(Bitmap img)
         {
-            img = new Bitmap(img);
-            Color pixel;
-            int gray;
-            for (int x = 0; x < img.Width; x++)
+            try
             {
-                for (int y = 0; y < img.Height; y++)
-                {
-                    pixel = img.GetPixel(x, y);
-                    gray = (int)(0.7 * pixel.R + 0.2 * pixel.G + 0.1 * pixel.B);
-                    img.SetPixel(x, y, Color.FromArgb(gray, gray, gray));
-                }
+                //创建客户端
+                RESTfulClient client = new RESTfulClient();
+                client.EndPoint = @"http://127.0.0.1:8000/";
+
+                //设置为POST
+                client.Method = EnumHttpVerb.POST;
+
+                //转换传输数据
+                string imgStr = BitmapUtils.Bitmap2String(img);
+                client.PostData = JsonConvert.SerializeObject(imgStr);
+
+                //获取服务
+                string resultJson = client.HttpRequest("ImageProcessing/DoHBFilter");
+
+                //处理结果并返回
+                string resultStr = JsonConvert.DeserializeObject<string>(resultJson);
+                return BitmapUtils.String2Bitmap(resultStr);
             }
-            return img;
+            catch (Exception)
+            {
+                img = new Bitmap(img);
+                Color pixel;
+                int gray;
+                for (int x = 0; x < img.Width; x++)
+                {
+                    for (int y = 0; y < img.Height; y++)
+                    {
+                        pixel = img.GetPixel(x, y);
+                        gray = (int)(0.7 * pixel.R + 0.2 * pixel.G + 0.1 * pixel.B);
+                        img.SetPixel(x, y, Color.FromArgb(gray, gray, gray));
+                    }
+                }
+                return img;
+            }
         }
     }
 

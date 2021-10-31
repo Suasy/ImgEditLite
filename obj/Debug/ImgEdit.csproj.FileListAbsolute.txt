@@ -36,3 +36,5 @@ D:\Study\ProgramStudy\C#Study\ImgEditLite\obj\Debug\ImgEdit.csproj.CoreCompileIn
 D:\Study\ProgramStudy\C#Study\ImgEditLite\obj\Debug\ImgEdit.csproj.CopyComplete
 D:\Study\ProgramStudy\C#Study\ImgEditLite\obj\Debug\ImgEdit.exe
 D:\Study\ProgramStudy\C#Study\ImgEditLite\obj\Debug\ImgEdit.pdb
+D:\Study\ProgramStudy\C#Study\ImgEditLite\bin\Debug\Newtonsoft.Json.dll
+D:\Study\ProgramStudy\C#Study\ImgEditLite\bin\Debug\Newtonsoft.Json.xml
